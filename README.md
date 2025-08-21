@@ -14,14 +14,14 @@ Examples of MariaDB Features we are requesting contributions to demonstrate with
 
 A simple way to get started, is to load the OpenFlights data into a MariaDB Docker container. 
 
-1. Copy openflights repo from github.
+1. Copy the OpenFlights for MariaDB repo from the Github repo.
 
 	```
 	git clone https://github.com/mariadb/openflights
 	cd openflights
 	```
 
-2. Start a mariadb database in docker and also copy the repo files into the container.
+2. Run a MariaDB database Docker container and copy the repo files into it.
 
 	```
 	docker run -d \
@@ -32,13 +32,13 @@ A simple way to get started, is to load the OpenFlights data into a MariaDB Dock
   	mariadb:11.4
 	```
 
-3. Create database and tables in mariadb (as root user).
+3. Create database and tables in MariaDB (as root user).
 
 	```
 	docker exec -i openflights-mariadb bash -c "mariadb -u root -prootpw123 < /openflights/sql/create.sql"
 	```
 
-4. Load the data into mariadb (as root user).
+4. Load the data into MariaDB (as root user).
  
 	```
 	docker exec -i openflights-mariadb bash -c "cd /openflights && mariadb -u root -prootpw123 flightdb2 < sql/load-data.sql"
