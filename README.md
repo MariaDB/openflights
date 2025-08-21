@@ -1,6 +1,75 @@
 # OpenFlights for MariaDB
 This is a repo to demonstrate MariaDB features with the publicly available data set from [openflights](https://github.com/jpatokal/openflights).
 
+## MariaDB features
+Examples of MariaDB Features we are requesting contributions to demonstrate with this data: 
+
+* [Galera Cluster](https://mariadb.com/docs/galera-cluster)
+* [ColumnStore](https://mariadb.com/docs/columnstore)
+* Other functionalities listed by MariaDB founder Monty Widenius in [Celebrating 15 years of MariaDB](https://monty-says.blogspot.com/2024/10/celebrating-15-years-of-mariadb.html).
+
+## Using OpenFlights data in MariaDB
+
+### Option 1: Loading data into MariaDB in a Docker container
+
+A simple way to get started, is to load the OpenFlights data into a MariaDB Docker container. 
+
+1. Copy openflights repo from github.
+
+	```
+	git clone https://github.com/mariadb/openflights
+	cd openflights
+	```
+
+2. Start a mariadb database in docker and also copy the repo files into the container.
+
+	```
+	docker run -d \
+  	--name openflights-mariadb \
+  	-e MARIADB_ROOT_PASSWORD=rootpw123 \
+  	-p 3306:3306 \
+  	-v $(pwd):/openflights \
+  	mariadb:11.4
+	```
+
+3. Create database and tables in mariadb (as root user).
+
+	```
+	docker exec -i openflights-mariadb bash -c "mariadb -u root -prootpw123 < /openflights/sql/create.sql"
+	```
+
+4. Load the data into mariadb (as root user).
+ 
+	```
+	docker exec -i openflights-mariadb bash -c "cd /openflights && mariadb -u root -prootpw123 flightdb2 < sql/load-data.sql"
+	```
+
+5. Open MariaDB client within docker container.
+
+	```
+	docker exec -it openflights-mariadb mariadb -u root -prootpw123
+	```
+
+6. Select the openflight database and show what tables it contains.
+
+	```sql
+	SHOW databases;
+	USE flightdb2
+	SHOW tables;
+	```
+
+7. Check what columns table airports has, and fetch five rows for all columns (*) and defined columns (name, city, country).
+
+	```sql
+	DESC airports;
+	SELECT * FROM airports LIMIT 5;
+	SELECT name, city, country FROM airports LIMIT 5;
+	```
+
+### Option 2: Run the complete OpenFlights application in a Docker container
+
+Another option is to run the OpenFlights application by using its ```docker-compose.yml```, but this has not yet been adjusted for MariaDB in this repo.
+
 # OpenFlights
 
 Welcome to the code base for [OpenFlights](https://openflights.org), a tool that lets you map your flights around the world, search and filter them in all sorts of interesting ways, calculate statistics automatically, and share your flights and trips with friends and the entire world (if you wish).
