@@ -1,3 +1,6 @@
+# OpenFlights for MariaDB
+This is a repo to demonstrate MariaDB features with the publicly available data set from [openflights](https://github.com/jpatokal/openflights).
+
 # OpenFlights
 
 Welcome to the code base for [OpenFlights](https://openflights.org), a tool that lets you map your flights around the world, search and filter them in all sorts of interesting ways, calculate statistics automatically, and share your flights and trips with friends and the entire world (if you wish).
