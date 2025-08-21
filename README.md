@@ -16,14 +16,14 @@ A simple way to get started, is to load the OpenFlights data into a MariaDB Dock
 
 1. Copy the OpenFlights for MariaDB repo from the Github.
 
-	```
+	```sh
 	git clone https://github.com/mariadb/openflights
 	cd openflights
 	```
 
 2. Run a MariaDB database Docker container and copy the repo files into it.
 
-	```
+	```sh
 	docker run -d \
   	--name openflights-mariadb \
   	-e MARIADB_ROOT_PASSWORD=rootpw123 \
@@ -34,19 +34,19 @@ A simple way to get started, is to load the OpenFlights data into a MariaDB Dock
 
 3. Create database and tables in MariaDB (as root user).
 
-	```
+	```sh
 	docker exec -i openflights-mariadb bash -c "mariadb -u root -prootpw123 < /openflights/sql/create.sql"
 	```
 
 4. Load the data into MariaDB (as root user).
  
-	```
+	```sh
 	docker exec -i openflights-mariadb bash -c "cd /openflights && mariadb -u root -prootpw123 flightdb2 < sql/load-data.sql"
 	```
 
 5. Open MariaDB client within docker container.
 
-	```
+	```sh
 	docker exec -it openflights-mariadb mariadb -u root -prootpw123
 	```
 
