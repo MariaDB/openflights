@@ -1,7 +1,7 @@
 # OpenFlights for MariaDB
 This is a repo to demonstrate MariaDB features with the publicly available data set from [openflights](https://github.com/jpatokal/openflights).
 
-## MariaDB features
+## MariaDB features to be showcased
 Examples of MariaDB Features we are requesting contributions to demonstrate with this data: 
 
 * [Galera Cluster](https://mariadb.com/docs/galera-cluster)
@@ -69,6 +69,8 @@ A simple way to get started, is to load the OpenFlights data into a MariaDB Dock
 ### Option 2: Run the complete OpenFlights application in a Docker container
 
 Another option is to run the OpenFlights application by using its ```docker-compose.yml```, but this has not yet been adjusted for MariaDB in this repo.
+
+---
 
 # OpenFlights
 
