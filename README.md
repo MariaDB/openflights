@@ -14,7 +14,7 @@ Examples of MariaDB Features we are requesting contributions to demonstrate with
 
 A simple way to get started, is to load the OpenFlights data into a MariaDB Docker container. 
 
-1. Copy the OpenFlights for MariaDB repo from the Github repo.
+1. Copy the OpenFlights for MariaDB repo from the Github.
 
 	```
 	git clone https://github.com/mariadb/openflights
