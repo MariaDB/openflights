@@ -69,6 +69,13 @@ A simple way to get started, is to load the OpenFlights data into a MariaDB Dock
 
 Another option is to run the OpenFlights application by using its ```docker-compose.yml```, but this has not yet been adjusted for MariaDB in this repo.
 
+## Windows Users
+
+Use `sql/load-data-windows.sql` instead of `sql/load-data.sql` when importing data on Windows. 
+This handles Windows CRLF line endings to prevent errors like:
+ERROR 1406 (Data too long for column 'active').
+
+
 ---
 
 # OpenFlights
