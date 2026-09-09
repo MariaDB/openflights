@@ -2,11 +2,12 @@
 
 A ready-to-import dataset of airports, airlines, routes, countries, and planes — sourced from [OpenFlights](https://github.com/jpatokal/openflights) and packaged for MariaDB.
 
-There are three ways to load it, depending on what you already have installed:
+There are four ways to load it, depending on what you already have installed:
 
 - **[A local MariaDB](#quick-start-with-local-mariadb)** — if MariaDB is already on your machine, or you want it to stay there afterwards.
 - **[Docker Compose](#quick-start-with-docker-compose)** — if you have Docker: one command, and nothing is installed on your machine.
 - **[Docker without Compose](#quick-start-with-docker-without-compose)** — the same, one step at a time.
+- **[MariaDB Cloud](#quick-start-with-mariadb-cloud)** — if you would rather not run a server at all.
 
 Whichever you pick, you end up with a `flightdb2` database holding the tables below. Each starts with `git clone`; if you do not have git, use GitHub's **Code → Download ZIP** button instead and unpack it.
 
@@ -80,6 +81,15 @@ docker exec -it openflights-mariadb mariadb -u root --password=flightpw flightdb
 ```
 
 If you already run MariaDB or MySQL on port 3306, change `-p 3306:3306` to `-p 3307:3306`. Nothing will complain if you do not: the container starts, but connections from your machine to port 3306 may reach your existing server instead of this one.
+
+## Quick start with MariaDB Cloud
+
+Create a database at [mariadbcloud.com](https://mariadbcloud.com), connect with the `mariadb`
+client using the host and credentials from the dashboard, then run `SOURCE sql/create.sql;`
+and `SOURCE sql/load-data.sql;` at the prompt.
+
+[Kicking the tires with OpenFlights data](https://mariadb.org/mariadb-cloud-kicking-the-tires-with-openflights-data/)
+on mariadb.org walks through exactly that with this dataset, start to finish in under ten minutes.
 
 ## Connecting to the MariaDB server
 
