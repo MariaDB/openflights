@@ -157,8 +157,10 @@ ORDER BY cnt DESC
 LIMIT 10;
 
 -- Longest routes out of Helsinki, by great-circle distance in km
+-- (POINT takes longitude first, then latitude)
 SELECT DISTINCT r.dst_ap, d.name AS destination,
-       ROUND(ST_Distance_Sphere(POINT(s.x, s.y), POINT(d.x, d.y)) / 1000) AS km
+       ROUND(ST_Distance_Sphere(POINT(s.longitude, s.latitude),
+                                POINT(d.longitude, d.latitude)) / 1000) AS km
 FROM routes r
 JOIN airports s ON s.apid = r.src_apid
 JOIN airports d ON d.apid = r.dst_apid
