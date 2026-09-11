@@ -51,7 +51,7 @@ docker compose exec mariadb mariadb -u root --password=flightpw flightdb2
 
 `--wait` returns only once the container is healthy, which is after `sql/create.sql` and `sql/load-data.sql` have run inside it, so the client opens on a fully loaded `flightdb2`. Any Docker-compatible runtime works, Colima included.
 
-Set `MARIADB_PORT=3307` if the default 3306 is taken, or `MARIADB_VERSION=11.4` to run a version other than the default, MariaDB's current long-term support release.
+Set `MARIADB_PORT=3307` if the default 3306 is taken, or `MARIADB_VERSION=11.4` to run a version other than the default, MariaDB 12.3 (the current long-term support release).
 
 ## Quick start with Docker (without Compose)
 
@@ -65,7 +65,7 @@ docker run -d \
   -e MARIADB_ROOT_PASSWORD=flightpw \
   -p 3306:3306 \
   -v $(pwd):/openflights \
-  mariadb:lts
+  mariadb:12.3
 
 # Create database and tables
 docker exec -i openflights-mariadb \

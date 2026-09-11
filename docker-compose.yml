@@ -10,7 +10,9 @@
 #
 services:
   mariadb:
-    image: mariadb:${MARIADB_VERSION:-lts}
+    # 12.3 is the current long-term support release. Pinned rather than
+    # `lts` so the default does not silently move to the next LTS.
+    image: mariadb:${MARIADB_VERSION:-12.3}
     container_name: openflights-mariadb
     environment:
       # Local development only. Also read by docker/init.sh.
