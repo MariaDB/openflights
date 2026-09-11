@@ -223,3 +223,5 @@ See the [OpenFlights data documentation](https://openflights.org/data.php) for f
 ## License
 
 The data in `data/` comes from [OpenFlights](https://openflights.org/data.php) ([github.com/jpatokal/openflights](https://github.com/jpatokal/openflights)) and is made available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See [data/LICENSE](data/LICENSE) for the full text and attribution requirements.
+
+The SQL schema and loader, the Docker Compose setup, the scripts and this documentation are licensed under the [MIT License](LICENSE).
