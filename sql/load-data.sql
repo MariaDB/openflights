@@ -40,13 +40,4 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 (name, iata, icao);
 
-SELECT 'Importing locales...' AS '';
-LOAD DATA LOCAL INFILE 'data/locales.dat'
-REPLACE INTO TABLE locales
-CHARACTER SET utf8mb4
-FIELDS TERMINATED BY ','
-OPTIONALLY ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-(locale, name);
-
 SELECT 'Done.' AS '';

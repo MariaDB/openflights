@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS `airlines`;
 DROP TABLE IF EXISTS `airports`;
 DROP TABLE IF EXISTS `countries`;
 DROP TABLE IF EXISTS `planes`;
-DROP TABLE IF EXISTS `locales`;
 
 CREATE TABLE `airlines` (
   `alid`         int(11)      NOT NULL AUTO_INCREMENT,
@@ -87,12 +86,6 @@ CREATE TABLE `routes` (
   UNIQUE KEY `alid` (`alid`, `src_apid`, `dst_apid`),
   KEY `src_apid` (`src_apid`),
   KEY `dst_apid` (`dst_apid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `locales` (
-  `locale`       varchar(5)   NOT NULL,
-  `name`         text,
-  PRIMARY KEY (`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 SELECT 'Done. Next: run sql/load-data.sql' AS '';

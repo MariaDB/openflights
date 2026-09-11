@@ -20,7 +20,6 @@ Whichever you pick, you end up with a `flightdb2` database holding the tables be
 | `routes` | ~67000 routes between airports |
 | `countries` | Country codes (ISO and DAFIF) |
 | `planes` | Aircraft types with IATA/ICAO codes |
-| `locales` | Supported locale codes and display names |
 
 ## Quick start with local MariaDB
 
@@ -216,7 +215,6 @@ Raw CSV data is in `data/`. The files have no header row.
 | `routes.dat` | airline, alid, src_ap, src_apid, dst_ap, dst_apid, codeshare, stops, equipment |
 | `countries.dat` | name, iso_code, dafif_code |
 | `planes.dat` | name, iata, icao |
-| `locales.dat` | locale, name |
 
 See the [OpenFlights data documentation](https://openflights.org/data.php) for full field descriptions.
 
