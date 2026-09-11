@@ -220,6 +220,15 @@ Raw CSV data is in `data/`. The files have no header row.
 
 See the [OpenFlights data documentation](https://openflights.org/data.php) for full field descriptions.
 
+## Data notes
+
+A few things to know before you rely on joins or NULL checks:
+
+- **No foreign keys, by design.** The tables have primary keys and a few indexes but no `FOREIGN KEY` constraints, so nothing stops a route from pointing at an airport or airline that does not exist.
+- **Some routes have no matching airport or airline.** 476 routes reference a `src_apid` or `dst_apid` that is not in `airports.dat`, 423 have a `NULL` airport id on one or both ends, and 479 have a `NULL` `alid`. These are gaps in the upstream data and are left as-is; an inner join silently drops them, and finding them is a good exercise.
+- **Empty fields are empty strings, not NULL.** `LOAD DATA` turns `""` and an empty unquoted field into `''`; only the literal `\N` becomes `NULL`. For example, most `airlines.alias` values are `NULL` (from `\N`) but 505 are `''` (from `""`), so test for both when it matters.
+- **The files are snapshots of different ages.** Upstream last refreshed airlines in 2017, airports and planes in 2019, countries in 2020, and routes in 2014 (a 2017 commit only remapped airport ids). Newer airports, airlines and routes are missing.
+
 ## License
 
 Data is made available under the [Open Database License](https://opendatacommons.org/licenses/odbl/1-0/). See [LICENSE](LICENSE).
