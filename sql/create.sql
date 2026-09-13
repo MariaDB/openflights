@@ -35,8 +35,8 @@ CREATE TABLE `airports` (
   `country_code` varchar(2),
   `iata`         varchar(3)   DEFAULT NULL,
   `icao`         varchar(4)   DEFAULT NULL,
-  `x`            double       NOT NULL,
-  `y`            double       NOT NULL,
+  `latitude`     double       NOT NULL,
+  `longitude`    double       NOT NULL,
   `elevation`    int(11)      DEFAULT NULL,
   `uid`          int(11)      DEFAULT NULL,
   `timezone`     float        DEFAULT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE `airports` (
   `type`         text,
   `source`       text,
   PRIMARY KEY (`apid`),
-  KEY `x` (`x`),
-  KEY `y` (`y`),
+  KEY `latitude` (`latitude`),
+  KEY `longitude` (`longitude`),
   KEY `iata` (`iata`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

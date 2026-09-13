@@ -14,7 +14,7 @@ REPLACE INTO TABLE airports
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
-(apid, name, city, country, iata, icao, y, x, elevation, timezone, dst, tz_id, type, source);
+(apid, name, city, country, iata, icao, latitude, longitude, elevation, timezone, dst, tz_id, type, source);
 
 SELECT 'Importing routes...' AS '';
 LOAD DATA LOCAL INFILE 'data/routes.dat'
