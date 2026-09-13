@@ -49,7 +49,7 @@ docker compose up --wait
 docker compose exec mariadb mariadb -u root --password=flightpw flightdb2
 ```
 
-`--wait` returns only once the container is healthy, which is after `sql/create.sql` and `sql/load-data.sql` have run inside it, so the client opens on a fully loaded `flightdb2`. Any Docker-compatible runtime works, Colima included.
+`--wait` returns only once the container is healthy, which is after `sql/create.sql` and `sql/load-data.sql` have run inside it, so the client opens on a fully loaded `flightdb2`. The load ends with `sql/verify.sql`, which compares each table's row count with its data file and prints `OK` or `MISMATCH` per table in the container log (`docker compose logs mariadb`). Any Docker-compatible runtime works, Colima included.
 
 Set `MARIADB_PORT=3307` if the default 3306 is taken, or `MARIADB_VERSION=11.4` to run a version other than the default, MariaDB's current long-term support release. To try the newest preview release instead, use the release-candidate tag from Docker Hub — at the time of writing `MARIADB_VERSION=13.0-rc`.
 
